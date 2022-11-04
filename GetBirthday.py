@@ -11,14 +11,24 @@ def get_birthdays_per_week(li):
             birthday_date = birthday_date.replace(year=current_date.year)
             if current_date > birthday_date:
                 birthday_date = birthday_date.replace(year=current_date.year + 1)
+
             delta = birthday_date - current_date
             if delta.days <= 7:
                d.setdefault(birthday_date.strftime('%A'),[]).append(key)
-    for k, v in d.items():
-        name = ", ".join(v)
-        print(f"{k}: {name}")
+
+    for days, names in d.items():
+        if days == "Saturday" or days == "Sunday":
+            d.setdefault("Monday").append(names)
+        
+    d.pop("Saturday")
+    d.pop("Sunday")
+    print(d)
+    # for k, v in d.items():
+    #     name = ", ".join(v)
+    #     d = f'{k}: {name}'
+    #     print(d)
             
             
 
-get_birthdays_per_week([{"Jill": "07.11"}, {"Illia":"07.11"}, {"Jullia":"30.11"}, {"Ivan":"12.11"},{"Jeka":"30.10"},{"Jack":"08.11"}, {"Jisus":"09.11"}, {"Hulio":"11.11"}])
+get_birthdays_per_week([{"Jill": "07.11"}, {"Illia":"07.11"}, {"Jullia":"30.11"}, {"Ivan":"12.11"},{"Jeka":"30.10"},{"Jack":"13.11"}, {"Jisus":"09.11"}, {"Hulio":"11.11"}])
   
