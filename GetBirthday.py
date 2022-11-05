@@ -15,16 +15,20 @@ def get_birthdays_per_week(users):
     }
     # Начинаем итерацию по списку
     
-    for items in users:
+    for user in users:
     # Приравниваем datetime из словарей текущий год 
-        for keys, values in items.items():
-            if keys == "birthday":
-                birthday_date = values.replace(year=current_datetime.year)
-                items["birthday"] = birthday_date
-    # Сравниваем текущий день и ДР
-        for keys, values in items.items():
+        birthday_date = datetime(
+                year=current_datetime.year,
+                month=user.get('birthday').month,
+                day=user.get('birthday').day
+        )
+
+
+    # Сравниваем текущий день и ДР используем и ключ и значкние
+        for keys, values in user.items():
             if current_datetime > birthday_date:
                 birthday_date = birthday_date.replace(year=current_datetime.year + 1)
+
     # Ищем разницу между ДР и текщим днем записываем в переменную delta
             delta = birthday_date - current_datetime
     
@@ -35,7 +39,7 @@ def get_birthdays_per_week(users):
     
     # По условию с субботы и воскресенья должны поздравить в понкдельник, тоесть всех именинников переносим в значение понедельника
     for day, names in b_day.items():
-        if day == "Saturday" or day == "Sunday":
+         if day in ('Saturday', 'Sunday'):
             b_day.setdefault("Monday", names).append(names)
 
     # Очищаем словарь от лишнего и от субботы с воскресеньем
@@ -46,15 +50,17 @@ def get_birthdays_per_week(users):
     # Для красоты вывода переводим все получившиеся списки в нутри списка-значения в строки 
     for names in b_day.values():
         for name in names:
-            if type(name) != str:
+            if not isinstance(name, str):
                 names.extend(name)
                 names.remove(name) 
+
     # Повторяем преддыдущий шаг
     for names in b_day.values():
         for name in names:
-            if type(name) != str:
+            if not isinstance(name, str):
                 names.extend(name)
-                names.remove(name)
+                names.remove(name) 
+    print(b_day)
     # Финальные штрихи переводим в словаре значение в строки
     for days, name in b_day.items():
         names = ", ".join(name)
