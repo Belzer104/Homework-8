@@ -37,6 +37,3 @@ def get_birthdays_per_week(li):
     #     name = ", ".join(v)
     #     d = f'{k}: {name}'
     #     print(d)
-            
-get_birthdays_per_week([{"Jill": "07.11"}, {"Illia":"07.11"}, {"Jullia":"30.11"}, {"Ivan":"12.11"},{"Jeka":"06.11"},{"Jack":"09.11"}, {"Jisus":"14.11"}, {"Hulio":"11.11"}])
-  
