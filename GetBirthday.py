@@ -1,42 +1,29 @@
 from datetime import datetime
 
-def get_birthdays_per_week(li):
-    d = dict()
-    for item in li:
+def get_birthdays_per_week(users):
+    current_datetime = datetime.now()
+    print(current_datetime)
+    for items in users:
+        for keys, values in items.items():
+            if keys == "birthday":
+                birthday_date = values.replace(year=current_datetime.year)
+                items["birthday"] = birthday_date
+        print(items)
+
+
+
+
+
         
-        for key, value in item.items():
-            birthday_date = datetime.strptime(value, '%d.%m')
-            current_date = datetime.now()
-
-            birthday_date = birthday_date.replace(year=current_date.year)
-            if current_date > birthday_date:
-                birthday_date = birthday_date.replace(year=current_date.year + 1)
-
-            delta = birthday_date - current_date
-            if delta.days < 7:
-               d.setdefault(birthday_date.strftime('%A'),[]).append(key)
-
-    for days, names in d.items():
-        if days == "Saturday" :
-            d.setdefault("Monday", names).append(names)
-        
-
-    for names in d.values():
-        for name in names:
-            if type(name) != str:
-                names.extend(name)
-                names.remove(name) 
-    for names in d.values():
-        for name in names:
-            if type(name) != str:
-                names.extend(name)
-                names.remove(name)
-         
-    print(d)
-    # for k, v in d.items():
-    #     name = ", ".join(v)
-    #     d = f'{k}: {name}'
-    #     print(d)
-            
-get_birthdays_per_week([{"Jill": "07.11"}, {"Illia":"07.11"}, {"Jullia":"30.11"}, {"Ivan":"12.11"},{"Jeka":"06.11"},{"Jack":"09.11"}, {"Jisus":"14.11"}, {"Hulio":"11.11"}])
+get_birthdays_per_week([
+{"name":"Jill","birthday":datetime(day=10, month=11,year = 1999)}, 
+{"name":"Illia","birthday":datetime(day=7, month=11,year = 1999)}, 
+{"name":"Jullia","birthday":datetime(day=30,month=12,year = 1999)}, 
+{"name":"Ivan","birthday":datetime(day=13,month=11,year = 1999)}, 
+{"name":"Jeka","birthday":datetime(day=5,month=11,year = 1999)},
+{"name":"Jack","birthday":datetime(day=9,month=11,year = 1999)}, 
+{"name":"Jisus","birthday":datetime(day=14,month=11,year = 1999)}, 
+{"name":"Hulio","birthday":datetime(day=11,month=11,year = 1999)}
+]
+) 
   
