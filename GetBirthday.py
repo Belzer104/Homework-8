@@ -23,17 +23,16 @@ def get_birthdays_per_week(users):
                 day=user.get('birthday').day
         )
 
-
-    # Сравниваем текущий день и ДР используем и ключ и значкние
-        for keys, values in user.items():
-            if current_datetime > birthday_date:
-                birthday_date = birthday_date.replace(year=current_datetime.year + 1)
+    # Сравниваем текущий день и ДР используем и ключ и значение 
+        if current_datetime > birthday_date:
+            birthday_date = birthday_date.replace(year=current_datetime.year + 1)
 
     # Ищем разницу между ДР и текщим днем записываем в переменную delta
-            delta = birthday_date - current_datetime
+        delta = birthday_date - current_datetime
     
     # По услловию должны с текущего дня на последующие 7 дней вывести позравление по дням если такие имеются
-            if delta.days < 7:
+        if delta.days < 7:
+            for keys, values in user.items():
                 if keys == "name":
                     b_day.setdefault(birthday_date.strftime('%A'), []).append(values)
     
@@ -60,14 +59,15 @@ def get_birthdays_per_week(users):
             if not isinstance(name, str):
                 names.extend(name)
                 names.remove(name) 
-    print(b_day)
+
     # Финальные штрихи переводим в словаре значение в строки
     for days, name in b_day.items():
         names = ", ".join(name)
         congratulations = f'{days}: {names}'
         print(congratulations)
     
-get_birthdays_per_week([
+get_birthdays_per_week(
+[
 {"name":"Jill","birthday":datetime(day=10, month=11,year = 1999)}, 
 {"name":"Illia","birthday":datetime(day=7, month=11,year = 1999)}, 
 {"name":"Jullia","birthday":datetime(day=30,month=12,year = 1999)}, 
