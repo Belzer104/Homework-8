@@ -1,5 +1,14 @@
 from datetime import datetime
-
+users = [
+    {"name":"Jill","birthday":datetime(day=10, month=11,year = 1999)}, 
+    {"name":"Illia","birthday":datetime(day=7, month=11,year = 1999)}, 
+    {"name":"Jullia","birthday":datetime(day=30,month=12,year = 1999)}, 
+    {"name":"Ivan","birthday":datetime(day=6,month=11,year = 1999)}, 
+    {"name":"Jeka","birthday":datetime(day=6,month=11,year = 1999)},
+    {"name":"Jack","birthday":datetime(day=12,month=11,year = 1999)}, 
+    {"name":"Jisus","birthday":datetime(day=13,month=11,year = 1999)}, 
+    {"name":"Hulio","birthday":datetime(day=11,month=11,year = 1999)}
+    ] 
 def get_birthdays_per_week(users):
 
     current_datetime = datetime.now()
@@ -23,7 +32,7 @@ def get_birthdays_per_week(users):
                 day=user.get('birthday').day
         )
 
-    # Сравниваем текущий день и ДР используем и ключ и значение 
+    # Сравниваем текущий день и ДР
         if current_datetime > birthday_date:
             birthday_date = birthday_date.replace(year=current_datetime.year + 1)
 
@@ -65,17 +74,6 @@ def get_birthdays_per_week(users):
         names = ", ".join(name)
         congratulations = f'{days}: {names}'
         print(congratulations)
-    
-get_birthdays_per_week(
-[
-{"name":"Jill","birthday":datetime(day=10, month=11,year = 1999)}, 
-{"name":"Illia","birthday":datetime(day=7, month=11,year = 1999)}, 
-{"name":"Jullia","birthday":datetime(day=30,month=12,year = 1999)}, 
-{"name":"Ivan","birthday":datetime(day=6,month=11,year = 1999)}, 
-{"name":"Jeka","birthday":datetime(day=6,month=11,year = 1999)},
-{"name":"Jack","birthday":datetime(day=12,month=11,year = 1999)}, 
-{"name":"Jisus","birthday":datetime(day=13,month=11,year = 1999)}, 
-{"name":"Hulio","birthday":datetime(day=11,month=11,year = 1999)}
-] 
-) 
+if __name__ == "__main__":
+    get_birthdays_per_week(users) 
   
