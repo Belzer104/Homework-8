@@ -56,17 +56,17 @@ def get_birthdays_per_week(users):
 
 
 
+get_birthdays_per_week()
 
-
-get_birthdays_per_week([
-{"name":"Jill","birthday":datetime(day=10, month=11,year = 1999)}, 
-{"name":"Illia","birthday":datetime(day=7, month=11,year = 1999)}, 
-{"name":"Jullia","birthday":datetime(day=30,month=12,year = 1999)}, 
-{"name":"Ivan","birthday":datetime(day=6,month=11,year = 1999)}, 
-{"name":"Jeka","birthday":datetime(day=6,month=11,year = 1999)},
-{"name":"Jack","birthday":datetime(day=6,month=11,year = 1999)}, 
-{"name":"Jisus","birthday":datetime(day=14,month=11,year = 1999)}, 
-{"name":"Hulio","birthday":datetime(day=11,month=11,year = 1999)}
-]
-) 
+# get_birthdays_per_week([
+# {"name":"Jill","birthday":datetime(day=10, month=11,year = 1999)}, 
+# {"name":"Illia","birthday":datetime(day=7, month=11,year = 1999)}, 
+# {"name":"Jullia","birthday":datetime(day=30,month=12,year = 1999)}, 
+# {"name":"Ivan","birthday":datetime(day=6,month=11,year = 1999)}, 
+# {"name":"Jeka","birthday":datetime(day=6,month=11,year = 1999)},
+# {"name":"Jack","birthday":datetime(day=6,month=11,year = 1999)}, 
+# {"name":"Jisus","birthday":datetime(day=14,month=11,year = 1999)}, 
+# {"name":"Hulio","birthday":datetime(day=11,month=11,year = 1999)}
+# ] 
+# ) 
   
